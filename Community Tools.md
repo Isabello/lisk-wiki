@@ -35,3 +35,6 @@
 **<a href="https://github.com/slasheks/lisk-api">Python interface for the Lisk API</a>** *By: slasheks* <br />A python interface for the Lisk API
 
 **<a href="https://github.com/vegahub/votingtool">Windows based Lisk voting tool</a>** *By: Vega* <br />Ann Autohotkey script for voting Lisk Delegates.
+
+**<a href="https://github.com/mrgrshift/free-ssl">Free ssl certificate </a>** *by: mrgr* <br />A tool that help you to generate/renew trusted ssl certificate (issued by Letsencrypt.org).
+
