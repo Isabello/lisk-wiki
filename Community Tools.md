@@ -38,3 +38,5 @@
 
 **<a href="https://github.com/mrgrshift/free-ssl">Free ssl certificate </a>** *by: mrgr* <br />A tool that help you to generate/renew trusted ssl certificate (issued by Letsencrypt.org).
 
+**<a href="https://github.com/wyh136/libLiskWin">Windows dynamic link library for Lisk API</a>** *by: Phinx* <br />Compatible with VC++ and Borland C++（Delphi）.
+
