@@ -10,7 +10,9 @@
 
 **<a href="http://liskrepo.io/">Lisk Linux Repository</a>** *By: Nerigal* <br />Lisk linux repository for CentOS and Ubuntu.
 
-**<a href="https://github.com/vrlc92/LiskMonitor">Lisk Monitor</a>** *By: vrlc92* <br />An app to monitor your delegate account
+**<a href="https://github.com/vrlc92/lisk-android-monitor">Lisk Monitor for Android</a>** *By: vrlc92* <br />Android app to monitor your delegate account
+
+**<a href="https://github.com/vrlc92/lisk-ios-monitor">Lisk Monitor for iOS</a>** *By: vrlc92* <br />iOS app to monitor your delegate account
 
 **<a href="http://fix.github.io/lisk-network-monitor/">Lisk network monitor</a>** *By: fixcrypt* <br />A quick look at the current blockheights of various nodes on the network.
 
