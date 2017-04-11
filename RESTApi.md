@@ -1,6 +1,7 @@
 **Accounts**
 
 `'get /': 'getAccount'`
+
 `GET /api/v2/accounts/<address>`
 
 This endpoint allows for querying of one specific wallet. Applicable query params are as follows:
@@ -70,7 +71,8 @@ Returned data is the following:
 
 **Blocks**
 
-`'get /': 'getBlocks'` - becomes the standard
+`'get /': 'getBlocks'` 
+
 `/api/v2/blocks/:<blockid>`
 
 This endpoint returns specific block data as an array. If no block is specified it returns the most recent 20 blocks. Examples
@@ -117,6 +119,7 @@ Returned default data is the following:
 **Constants (Or Headers)**
 
 `'get /': 'getConstants'` 
+
 `/api/v2/constants/`
 
 This new endpoint will return constants data, such as fees, milestones, nethash etc
@@ -155,6 +158,7 @@ Milestone and block Reward
 **Delegates**
 
 `'get /': 'getDelegates'`
+
 `/api/v2/delegates/`
 
 This endpoint only returns a paginated list of delegates for displaying delegates for voting
@@ -194,6 +198,7 @@ Sort by approval
 **Forging**
 
 `'put /': 'forgingToggle'`
+
 `/api/v2/forging`
 
 This new endpoint will be protected by white list and serve as the new mechanism to enable/disable forging on a node.
@@ -212,6 +217,7 @@ This gap is important to remove the ability to reuse signed messages maliciously
 **Peers**
 
 `'get /': 'getPeers'`
+
 `/api/v2/peers/:ip||limit`
 
 Refactor peers api endpoint to return an array always. Filter criteria to reduce the list. Limit is always max 20 but can use sort criteria
@@ -250,6 +256,7 @@ Sort can also be used
 **Status**
 
 `'get /': 'nodeStatus'`
+
 `/api/v2/status`
 
 Fields can be filtered on all entries, the default returns all data. Examples
@@ -275,15 +282,19 @@ Syncing state
 **Transactions**
 
 `'get /': 'getTransactions'`
+
 `/api/v2/transactions/:id` - TX committed to the db, returns most recent 25 unless specific filter criteria/sort criteria are applied
 
 `'get /': 'getUnconfirmed'`
+
 `/api/v2/transactions/unconfirmed/` - Returns only unconfirmed transactions, always returns 25 as thats the cap of unconfirmed but processed tx
 
 `'get /': 'getPendingMultisignatures'`
+
 `/api/v2/transactions/multisignatures/`- Returns all pending multisignature transactions, can be filtered with address or publicKey
 
 `'get /': 'getQueued'`
+
 `/api/v2/transactions/queued/` - Returns the queued tx, can be filtered with senderId, recipientId, publicKeys, etc
 
 Filters the queued tx, can be filtered with senderId, recipientId, publicKeys, etc
@@ -318,6 +329,7 @@ Filters the queued tx, can be filtered with senderId, recipientId, publicKeys, e
 **Voters**
 
 `'get /': 'getVoters'`
+
 `/api/v2/voters/:<delegate>`
 
 Can be passed: Address, Publickey, username -- needs regex magic
@@ -340,6 +352,7 @@ Can be passed: Address, Publickey, username -- needs regex magic
 **Votes**
 
 `'get/': 'getVotes'`
+
 `/api/v2/votes/:<delegate>`
 
 Can be passed: Address, Publickey, username -- needs regex magic
