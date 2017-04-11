@@ -1,7 +1,7 @@
 **Accounts**
 
-'get /': 'getAccount'
-GET /api/v2/accounts/<address>
+`'get /': 'getAccount'`
+`GET /api/v2/accounts/<address>`
 
 This endpoint allows for querying of one specific wallet. Applicable query params are as follows:
 
@@ -12,10 +12,10 @@ username
 Fields can be filtered on all entries, the default returns all data. Examples
 
 Balance only
-GET /api/v2/accounts/12668885769632475474L?fields=balance
+`GET /api/v2/accounts/12668885769632475474L?fields=balance`
 
 PublicKeys
-GET /api/v2/accounts/12668885769632475474L?fields=publicKey,secondPublicKey
+`GET /api/v2/accounts/12668885769632475474L?fields=publicKey,secondPublicKey`
 
 Returned data is the following:
 
@@ -70,21 +70,21 @@ Returned data is the following:
 
 **Blocks**
 
-'get /': 'getBlocks', - becomes the standard
-/api/v2/blocks/:<blockid>
+`'get /': 'getBlocks'` - becomes the standard
+`/api/v2/blocks/:<blockid>`
 
 This endpoint returns specific block data as an array. If no block is specified it returns the most recent 20 blocks. Examples
 
-/api/v2/blocks/7656205841552355056
-/api/v2/blocks/?limit=10 --- Returns only 10 most recent blocks
+`/api/v2/blocks/7656205841552355056`
+`/api/v2/blocks/?limit=10` --- Returns only 10 most recent blocks
 
 Fields can be filtered on all entries, the default returns all data. Examples
 
 Height only
-GET /api/v2/blocks/7656205841552355056?fields=height
+`GET /api/v2/blocks/7656205841552355056?fields=height`
 
 Generator Public Key and reward
-GET /api/v2/blocks/7656205841552355056?fields=generatorPublicKey,reward
+`GET /api/v2/blocks/7656205841552355056?fields=generatorPublicKey,reward`
 
 Returned default data is the following:
 
@@ -116,19 +116,20 @@ Returned default data is the following:
 
 **Constants (Or Headers)**
 
-'get /': 'getConstans', - becomes the standard
-/api/v2/constants/
+`'get /': 'getConstants'` 
+`/api/v2/constants/`
 
 This new endpoint will return constants data, such as fees, milestones, nethash etc
 
 Fields can be filtered on all entires, the default returns all data. Examples
 
 Nethash only
-/api/v2/constants/?fields=nethash
+`/api/v2/constants/?fields=nethash`
 
 Milestone and block Reward
-/api/v2/constants/?fields=milestone,reward
+`/api/v2/constants/?fields=milestone,reward`
 
+```
 {
   "success": true,
   "broadhash": "8680efd470d7d98b418bdf3db40e6dfbb9f0239d2d60f49a33b196938c8cc677",
@@ -149,26 +150,27 @@ Milestone and block Reward
     "dapp": 2500000000
   }
 }
+```
 
 **Delegates**
 
-'get /': 'getDelegates'
-/api/v2/delegates/
+`'get /': 'getDelegates'`
+`/api/v2/delegates/`
 
 This endpoint only returns a paginated list of delegates for displaying delegates for voting
 
 Fields can be filtered on all entries, the default returns a full array of data with limit 101(or 20?). Examples
 
 Usernames and approval only
-/api/v2/delegates/?fields=username,approval
+`/api/v2/delegates/?fields=username,approval`
 
 Sorting should also be possible
 
 Sort by name
-/api/v2/delegates/?sort=+username
+`/api/v2/delegates/?sort=+username`
 
 Sort by approval
-/api/v2/delegates/?sort=-approval
+`/api/v2/delegates/?sort=-approval`
 
 ```
 {
@@ -191,8 +193,8 @@ Sort by approval
 
 **Forging**
 
-'put /': 'forgingToggle'
-/api/v2/forging
+`'put /': 'forgingToggle'`
+`/api/v2/forging`
 
 This new endpoint will be protected by white list and serve as the new mechanism to enable/disable forging on a node.
 
@@ -209,18 +211,18 @@ This gap is important to remove the ability to reuse signed messages maliciously
 
 **Peers**
 
-'get /': 'getPeers'
-/api/v2/peers/:ip||limit
+`'get /': 'getPeers'`
+`/api/v2/peers/:ip||limit`
 
 Refactor peers api endpoint to return an array always. Filter criteria to reduce the list. Limit is always max 20 but can use sort criteria
 
 Fields can be filtered on all entries, the default returns a full array of data with limit 20. Examples
 
 Only Ips and Ports
-/api/v2/peers/?fields=ip,ports
+`/api/v2/peers/?fields=ip,ports`
 
 Sort can also be used
-/api/v2/peers/?sort=+state
+`/api/v2/peers/?sort=+state`
 
 
 ```
@@ -247,16 +249,16 @@ Sort can also be used
 
 **Status**
 
-'get /': 'nodeStatus',
-/api/v2/status
+`'get /': 'nodeStatus'`
+`/api/v2/status`
 
 Fields can be filtered on all entries, the default returns all data. Examples
 
 Height and Broadhash
-/api/v2/status/?fields=height,broadhash
+`/api/v2/status/?fields=height,broadhash`
 
 Syncing state
-/api/v2/status/?fields=syncing
+`/api/v2/status/?fields=syncing`
 
 
 ```
@@ -272,17 +274,17 @@ Syncing state
 
 **Transactions**
 
-'get /': 'getTransactions'
-/api/v2/transactions/:id - TX committed to the db, returns most recent 25 unless specific filter criteria/sort criteria are applied
+`'get /': 'getTransactions'`
+`/api/v2/transactions/:id` - TX committed to the db, returns most recent 25 unless specific filter criteria/sort criteria are applied
 
-'get /': 'getUnconfirmed'
-/api/v2/transactions/unconfirmed/ - Returns only unconfirmed transactions, always returns 25 as thats the cap of unconfirmed but processed tx
+`'get /': 'getUnconfirmed'`
+`/api/v2/transactions/unconfirmed/` - Returns only unconfirmed transactions, always returns 25 as thats the cap of unconfirmed but processed tx
 
-'get /': 'getPendingMultisignatures'
-/api/v2/transactions/multisignatures/ - Returns all pending multisignature transactions, can be filtered with address or publicKey
+`'get /': 'getPendingMultisignatures'`
+`/api/v2/transactions/multisignatures/`- Returns all pending multisignature transactions, can be filtered with address or publicKey
 
-'get /': 'getQueued'
-/api/v2/transactions/queued/ - Returns the queued tx, can be filtered with senderId, recipientId, publicKeys, etc
+`'get /': 'getQueued'`
+`/api/v2/transactions/queued/` - Returns the queued tx, can be filtered with senderId, recipientId, publicKeys, etc
 
 Filters the queued tx, can be filtered with senderId, recipientId, publicKeys, etc
 
@@ -315,11 +317,12 @@ Filters the queued tx, can be filtered with senderId, recipientId, publicKeys, e
 
 **Voters**
 
-'get /': 'getVoters'
-/api/v2/voters/:<delegate>
+`'get /': 'getVoters'`
+`/api/v2/voters/:<delegate>`
 
 Can be passed: Address, Publickey, username -- needs regex magic
 
+```
 {
   "success": true,
   "voters": [
@@ -332,14 +335,16 @@ Can be passed: Address, Publickey, username -- needs regex magic
   "weight": "Total weight of voters. Integer",
   "totalCount": "Count of voters. Integer"
 }
+```
 
 **Votes**
 
-'get/': 'getVotes'
-/api/v2/votes/:<delegate>
+`'get/': 'getVotes'`
+`/api/v2/votes/:<delegate>`
 
 Can be passed: Address, Publickey, username -- needs regex magic
 
+```
 {
   "success": true,
   "voters": [
@@ -351,3 +356,4 @@ Can be passed: Address, Publickey, username -- needs regex magic
   "balance": "Total balance used to vote. Integer",
   "totalCount": "Count of votes used. Integer"  
 }
+```
