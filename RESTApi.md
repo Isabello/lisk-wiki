@@ -20,7 +20,6 @@ GET /api/v2/accounts/12668885769632475474L?fields=publicKey,secondPublicKey
 Returned data is the following:
 
 ```
-
 {
   "success": true,
   "account": {
@@ -287,6 +286,7 @@ Syncing state
 
 Filters the queued tx, can be filtered with senderId, recipientId, publicKeys, etc
 
+```
 {
   "success": true,
   "transactions": [
@@ -311,10 +311,7 @@ Filters the queued tx, can be filtered with senderId, recipientId, publicKeys, e
   ],
   "totalCount": "Integer"
 }
-
-
-
-
+```
 
 **Voters**
 
