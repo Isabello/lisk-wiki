@@ -6,7 +6,7 @@ Currently, `modules/accounts.js` and `logic/account.js` control all functionalit
 
 **`logic/account.js`**
 
-`Account.prototype.createTables`
+- `Account.prototype.createTables`
 
 Creates memory tables related to accounts:
 ```
