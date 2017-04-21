@@ -168,7 +168,7 @@ Foreign Key relations that need to be removed from mem_accounts:
 
 Since in the current model, the database is updated with every transaction, a new method to maintain unconfirmed state.
 
-Proposal for unconfirmed states:
+### Proposal for unconfirmed states:
 
 A new type of object will need to be kept in memory and account state cached within it. When a transaction is received by a node, it will check if the account is already found in memory, if so it will update the in memory balance, username, secondsignature and multisig related status.
 
@@ -176,7 +176,7 @@ If the account is not found in memory, it will be loaded into memory via `Accoun
 
 Further persistence of this data could be gained by caching in something like Redis, if so desired.
 
-Proposal to split out delegates specific data:
+### Proposal to split out delegates specific data:
 
 Columns to remove from mem_accounts:
 - `username`
