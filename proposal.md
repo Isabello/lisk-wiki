@@ -5,55 +5,74 @@ Memory Accounts Refactor
 Currently, `modules/accounts.js` and `logic/account.js` control all functionality related to accounts queries, table creation and entry updates. The main functions exist in logic and include:
 
 **`logic/account.js`**
-Account.prototype.createTables
+
+`Account.prototype.createTables`
+
 Creates memory tables related to accounts:
-```mem_accounts
+```
+mem_accounts
 mem_round
 mem_accounts2delegates
 mem_accounts2u_delegates
 mem_accounts2multisignatures
-mem_accounts2u_multisignatures```
+mem_accounts2u_multisignatures
+```
 
-Account.prototype.removeTables 
+`Account.prototype.removeTables`
+
 Deletes the contents of these tables:
-```mem_round
+
+```
+mem_round
 mem_accounts2delegates
 mem_accounts2u_delegates
 mem_accounts2multisignatures
-mem_accounts2u_multisignatures```
+mem_accounts2u_multisignatures
+```
 
-`Account.prototype.objectNormalize `
+`Account.prototype.objectNormalize`
+
 Performs validation of accounts related schema 
 
 `Account.prototype.verifyPublicKey`
+
 Performs checks of the public key to ensure its not tampered with.
 
 `Account.prototype.toDB`
+
 Used by `Account.prototype.set` in order to insert or update data
 
 `Account.prototype.get`
+
 Returns accounts related data for specified fields and filter criteria
 
 `Account.prototype.getAll`
+
 Leveraged by the above to gather more results than normally allowed, used for explorer for topAccounts
 
 `Account.prototype.set`
+
 Creates account entries on the mem_accounts table
 
 `Account.prototype.merge`
+
 Updates account entries on the mem_accounts table that already have an entry.
 Additionally updates mem_rounds with fees related data
 
 `Account.prototype.remove`
+
 Removes an account from the mem_accounts table.
 
 **`modules/accounts.js`**
+
 The main two functions that need to be looked at for this piece are as follows:
 
 `Accounts.prototype.setAccountAndGet`
+
 Creates the account in the database using `logic.account.set` if it doesn't exist and returns the account data using `logic.account.get`
 
 `mergeAccountAndGet`
+
 Updates an account in the database using `logic.account.merge` and eturns the account data using `logic.account.get`
 
 One major thing of note is that there are two path ways for accounts data to be created/updated. The first is with `Accounts.prototype.setAccountAndGet`, the second is with `logic.account.merge`. 
@@ -101,26 +120,41 @@ All accounts related manipulation should be performed inside of PostgreSQL via t
 Under the new system, `logic/account.js` and `modules/accounts.js` will be stripped of the following functions:
 
 `logic/account.js`
+
 - `Account.prototype.merge`
+
 No longer needed because balances and other fields can be updated with triggers
+
 - `Account.prototype.toDB`
-Accounts are no longer made by set
+
+Accounts are no longer created by set
+
 - `Account.prototype.set`
+
 As above
+
 - `Account.prototype.remove`
+
 Accounts will be deleted via triggers
 
 `modules/accounts.js`
+
 `Accounts.prototype.setAccountAndGet`
+
 Underlying functions are going away with triggers, obsoleting this code
+
 `mergeAccountAndGet`
+
 As above
 
 Additionally, the following tables will be removed:
+
 - `mem_accounts2u_delegates`
+
 - `mem_accounts2u_multisignatures`
 
 The following columns will be removed from mem_accounts relating to uncofirmed states:
+
 ```
 "u_isDelegate" SMALLINT DEFAULT 0,
 "u_secondSignature" SMALLINT DEFAULT 0,
@@ -133,6 +167,7 @@ The following columns will be removed from mem_accounts relating to uncofirmed s
 ```
 
 Foreign Key relations that need to be removed from mem_accounts:
+
 ```
  "mem_accounts2u_delegates_accountId_fkey"
  "mem_accounts2u_multisignatures_accountId_fkey" 
